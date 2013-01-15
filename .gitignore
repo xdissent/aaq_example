@@ -2,7 +2,9 @@
 /log
 /tmp
 /vendor/bundle
-/db
+/db/*.sqlite3
+/db/schema.rb
+/db/seeds.rb
 Gemfile.lock
 .bundle
 .powenv
