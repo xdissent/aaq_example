@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: incididunt ut labore et dolore
+  description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  quantity: 3
+  public: false
+
+two:
+  name: enim ad minim veniam
+  description: Excepteur sint occaecat cupidatat non proident, sunt in culpa.
+  quantity: 15
+  public: true

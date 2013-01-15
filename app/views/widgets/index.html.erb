@@ -1,0 +1,27 @@
+<h1>Widgets#index</h1>
+
+<pre><%=h @query.inspect %></pre>
+
+<hr>
+
+<% form_tag({}, :id => 'query_form') do %>
+  <%= query_filters @query %>
+  
+  <%= query_columns @query %>
+
+  <%= link_to_remote "Apply", { 
+        :url => { :set_filter => 1 },
+        # :before => 'selectAllOptions("selected_columns");',
+        :update => "content",
+        :complete => "apply_filters_observer()",
+        :with => "Form.serialize('query_form')"
+      } %>              
+<% end %>
+
+<hr>
+  
+<ul>
+  <% @query.query.each do |widget| %>
+    <li><pre><%=h widget.inspect %></li>
+  <% end %>
+</ul>
