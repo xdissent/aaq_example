@@ -1,16 +1,18 @@
 class Widget < ActiveRecord::Base
 
-  acts_as_queryable :columns => [
-    {:name => :name, :sortable => "#{table_name}.name"},
-    {:name => :description, :sortable => "#{table_name}.description"},
-    {:name => :public, :sortable => "#{table_name}.public", :groupable => true},
-    {:name => :created_at, :sortable => "#{table_name}.created_at", :default_order => 'desc'},
-    {:name => :updated_at, :sortable => "#{table_name}.updated_at", :default_order => 'desc'}
-  ], :filters => {
+  acts_as_queryable :columns => {
+    :name => {:sortable => true},
+    :description => {:sortable => true},
+    :public => {:sortable => true, :groupable => true},
+    :created_at => {:sortable => "TABLE.FIELD", :default_order => 'desc'},
+    :updated_at => {:sortable => false, :default_order => 'desc'},
+    :quantity => {:sortable => true}
+  }, :filters => {
     :name => {:type => :text, :order => 1},
     :description => {:type => :text, :order => 2},
-    :public => {:type => :integer, :order => 3},
+    :public => {:type => :boolean, :order => 3},
     :created_at => {:type => :date_past, :order => 4},
-    :updated_at => {:type => :date_past, :order => 5}
+    :updated_at => {:type => :date_past, :order => 5},
+    :quantity => {:type => :integer, :order => 6}
   }
 end
