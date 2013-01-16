@@ -2,11 +2,11 @@ class Widget < ActiveRecord::Base
 
   acts_as_queryable :columns => {
     :name => {:sortable => true},
-    :description => {:sortable => true},
-    :public => {:sortable => true, :groupable => true},
-    :created_at => {:sortable => "TABLE.FIELD", :default_order => 'desc'},
-    :updated_at => {:sortable => false, :default_order => 'desc'},
-    :quantity => {:sortable => true}
+    :description => {},
+    :public => {:groupable => true},
+    :created_at => {:sortable => "widgets.created_at", :default_order => 'desc'},
+    :updated_at => {:sortable => true, :default_order => 'desc'},
+    :quantity => {:sortable => true, :default_order => 'desc'}
   }, :filters => {
     :name => {:type => :text, :order => 1},
     :description => {:type => :text, :order => 2},
