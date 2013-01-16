@@ -1,32 +1,13 @@
-<h1>Widgets#index</h1>
-
-<hr>
-
-<pre><%=h @query.inspect %></pre>
+<h1>Widgets</h1>
 
 <hr>
   
-<%= error_messages_for 'query' %>
-
-<% form_tag({}, :id => 'query_form', :onsubmit => "return false;") do %>
-
-  <%= query_filters @query %>
+<% query_form_tag %>
   
-  <%= query_columns @query %>
+<hr>
 
-  <%= query_group_by @query %>
-  
-  <%= query_sort_criteria @query %>
-
-  <%= link_to_remote "Apply", { 
-        :url => { :set_filter => 1 },
-        :before => 'selectAllOptions("selected_columns");',
-        :update => "content",
-        :complete => "apply_filters_observer()",
-        :with => "Form.serialize('query_form')"
-      } %>
+<% if @query.valid? %>
+  <%= query_list %>
+<% else %>
+  <%= query_errors %>
 <% end %>
-
-<hr>
-
-<%= query_list @query %>
