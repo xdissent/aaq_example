@@ -10,7 +10,7 @@
   
   <%= query_columns @query %>
 
-  <%#= query_options @query %>
+  <%= query_group_by @query %>
 
   <%= link_to_remote "Apply", { 
         :url => { :set_filter => 1 },
