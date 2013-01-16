@@ -4,14 +4,17 @@
 
 <hr>
 
-<% form_tag({}, :id => 'query_form') do %>
+<% form_tag({}, :id => 'query_form', :onsubmit => "return false;") do %>
+
   <%= query_filters @query %>
   
   <%= query_columns @query %>
 
+  <%#= query_options @query %>
+
   <%= link_to_remote "Apply", { 
         :url => { :set_filter => 1 },
-        # :before => 'selectAllOptions("selected_columns");',
+        :before => 'selectAllOptions("selected_columns");',
         :update => "content",
         :complete => "apply_filters_observer()",
         :with => "Form.serialize('query_form')"
@@ -21,7 +24,7 @@
 <hr>
   
 <ul>
-  <% @query.query.each do |widget| %>
+  <% @widgets.each do |widget| %>
     <li><pre><%=h widget.inspect %></li>
   <% end %>
 </ul>
