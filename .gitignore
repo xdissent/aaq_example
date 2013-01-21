@@ -10,3 +10,5 @@ Gemfile.lock
 .powenv
 /public/javascripts
 /public/stylesheets
+.rvmrc
+/public/plugin_assets
