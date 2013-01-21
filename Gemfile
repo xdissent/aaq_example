@@ -17,18 +17,3 @@ end
 group :sqlite do
   gem "sqlite3"
 end
-
-# Load a "local" Gemfile
-gemfile_local = File.join(File.dirname(__FILE__), "Gemfile.local")
-if File.readable?(gemfile_local)
-  puts "Loading #{gemfile_local} ..." if $DEBUG
-  instance_eval(File.read(gemfile_local))
-end
-
-# Load plugins' Gemfiles
-["plugins", "chiliproject_plugins"].each do |plugin_path|
-  Dir.glob File.expand_path("../vendor/#{plugin_path}/*/Gemfile", __FILE__) do |file|
-    puts "Loading #{file} ..." if $DEBUG # `ruby -d` or `bundle -v`
-    instance_eval File.read(file)
-  end
-end
